@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This application was built using an Zend framework as a foundation to generates image galleries in response to user searches, drawing content from Flickr using their REST API.
+This application was built using Zend framework as a foundation to generate image galleries in response to user searches, drawing content from Flickr using their REST API.
 
 ## Installation using Composer
 
@@ -16,7 +16,7 @@ This application is set up to use Composer to resolve its dependencies. Run the 
 $ composer self-update
 $ composer install
 ```
-Next, we need to create a database schema and tables using the data/schema.sql file in mysql. We need to st the db username and password into the
+Next, we need to create a database schema and tables using the data/schema.sql file in mysql. We need to set the db username and password into the
 config/autoload/local.php file as bellow. We also need to set flickr api key in this file.
 
 ```bash
@@ -70,14 +70,7 @@ or manually make matching updates to the `.dist`-less copies of those files.
 
 ## Running Unit Tests
 
-To run the supplied skeleton unit tests, you need to do one of the following:
-
-- During initial project creation, select to install the MVC testing support.
-- After initial project creation, install [zend-test](https://zendframework.github.io/zend-test/):
-
-  ```bash
-  $ composer require --dev zendframework/zend-test
-  ```
+Todo: Done functinal test. Unit test couldn't be done due to time limit.
 
 Once testing support is present, you can run the tests using:
 
@@ -155,8 +148,8 @@ project and you should be ready to go! It should look something like below:
 ```apache
 <VirtualHost *:80>
     ServerName zfapp.localhost
-    DocumentRoot /path/to/zfapp/public
-    <Directory /path/to/zfapp/public>
+    DocumentRoot /path/to/flickrimagegallery/public
+    <Directory /path/to/flickrimagegallery/public>
         DirectoryIndex index.php
         AllowOverride All
         Order allow,deny
@@ -182,14 +175,14 @@ http {
 ```
 
 
-Create a virtual host configuration file for your project under `/path/to/nginx/sites-enabled/zfapp.localhost.conf`
+Create a virtual host configuration file for your project under `/path/to/nginx/sites-enabled/flickrimagegallery.localhost.conf`
 it should look something like below:
 
 ```nginx
 server {
     listen       80;
     server_name  zfapp.localhost;
-    root         /path/to/zfapp/public;
+    root         /path/to/flickrimagegallery/public;
 
     location / {
         index index.php;
@@ -199,7 +192,7 @@ server {
     location @php {
         # Pass the PHP requests to FastCGI server (php-fpm) on 127.0.0.1:9000
         fastcgi_pass   127.0.0.1:9000;
-        fastcgi_param  SCRIPT_FILENAME /path/to/zfapp/public/index.php;
+        fastcgi_param  SCRIPT_FILENAME /path/to/flickrimagegallery/public/index.php;
         include fastcgi_params;
     }
 }
@@ -207,30 +200,9 @@ server {
 
 Restart the nginx, now you should be ready to go!
 
-## QA Tools
+### Storage selection:
 
-The skeleton does not come with any QA tooling by default, but does ship with
-configuration for each of:
+Since user registration data needs to persistent forever, I have chosed mysql as a storage.
+The recent search result was also planning to save in the database flickr_images.flickr_image table but could not implement yet.
 
-- [phpcs](https://github.com/squizlabs/php_codesniffer)
-- [phpunit](https://phpunit.de)
 
-Additionally, it comes with some basic tests for the shipped
-`Application\Controller\IndexController`.
-
-If you want to add these QA tools, execute the following:
-
-```bash
-$ composer require --dev phpunit/phpunit squizlabs/php_codesniffer zendframework/zend-test
-```
-
-We provide aliases for each of these tools in the Composer configuration:
-
-```bash
-# Run CS checks:
-$ composer cs-check
-# Fix CS errors:
-$ composer cs-fix
-# Run PHPUnit tests:
-$ composer test
-```
