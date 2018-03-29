@@ -64,10 +64,6 @@ label.lcol-sm-2.col-form-labels.pull-left{
  margin-top: 5px;
 }
 
-div.container {
-    min-height: 100%;
-}
-
 .panel-title {
    white-space: nowrap;
    overflow: hidden;
