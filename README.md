@@ -72,17 +72,6 @@ or manually make matching updates to the `.dist`-less copies of those files.
 
 Todo: Done functinal test. Unit test couldn't be done due to time limit.
 
-Once testing support is present, you can run the tests using:
-
-```bash
-$ ./vendor/bin/phpunit
-```
-
-If you need to make local modifications for the PHPUnit test setup, copy
-`phpunit.xml.dist` to `phpunit.xml` and edit the new file; the latter has
-precedence over the former when running tests, and is ignored by version
-control. (If you want to make the modifications permanent, edit the
-`phpunit.xml.dist` file.)
 
 ## Using Vagrant
 
@@ -147,7 +136,7 @@ project and you should be ready to go! It should look something like below:
 
 ```apache
 <VirtualHost *:80>
-    ServerName zfapp.localhost
+    ServerName flickrimagegallery.localhost
     DocumentRoot /path/to/flickrimagegallery/public
     <Directory /path/to/flickrimagegallery/public>
         DirectoryIndex index.php
@@ -181,7 +170,7 @@ it should look something like below:
 ```nginx
 server {
     listen       80;
-    server_name  zfapp.localhost;
+    server_name  flickrimagegallery.localhost;
     root         /path/to/flickrimagegallery/public;
 
     location / {

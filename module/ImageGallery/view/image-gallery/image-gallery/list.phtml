@@ -1,0 +1,40 @@
+<?php
+$title = 'Flickr Image Gallery';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<?php
+if (isset($sessionContainer->recent_images)) {
+    $recent_images = $sessionContainer->recent_images;
+    //print_r($recent_images);
+}
+?>
+<p>
+    <a href="<?= $this->url('imagegallery', ['action' => 'view']) ?>">Recent</a>
+</p>
+
+<?php if (count($this->paginator)): ?>
+    <div class="row justify-content-md-center">
+        <?php foreach ($this->paginator as $image): ?>
+            <div class="col-md-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><?= $this->escapeHtml($image['title']) ?></h3>
+                    </div>
+                    <div class="panel-body">
+                        <a href="<?= $this->url('imagegallery', ['action' => 'view', 'id' => $image['id'], 'url' => urlencode($image['url_l'])]) ?>"><img src="<?= $image['url_t'] ?>" class="img-thumbnail"></a>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>
+
+<?=
+$this->paginationControl(
+        $this->paginator, 'Sliding', 'partial/pagination_control.phtml', array(
+    'route' => 'imagegallery',
+    'routeOptions' => array('action' => 'list')
+        )
+)
+?>

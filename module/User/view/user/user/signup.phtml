@@ -1,0 +1,61 @@
+<?php
+$title = 'Sign Up';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+
+<?php
+$form->setAttribute('action', $this->url('user', ['action' => 'signup']));
+$form->prepare();
+
+$email = $form->get('email');
+$email->setAttribute('class', 'form-control');
+$email->setAttribute('placeholder', 'Email address');
+
+$name = $form->get('name');
+$name->setAttribute('class', 'form-control');
+$name->setAttribute('placeholder', 'Your name');
+
+$password = $form->get('password');
+$password->setAttribute('class', 'form-control');
+$password->setAttribute('placeholder', 'Password');
+
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+?>
+<div class="form-group row">
+    <?= $this->formLabel($email) ?>
+    <div class="col-sm-3">
+      <?= $this->formElement($email) ?>
+      <?= $this->formElementErrors()->render($email, ['class' => 'help-block']) ?>
+    </div>  
+</div>
+
+<div class="form-group row">
+    <?= $this->formLabel($name) ?>
+    <div class="col-sm-3">
+      <?= $this->formElement($name) ?>
+      <?= $this->formElementErrors()->render($name, ['class' => 'help-block']) ?>
+    </div>  
+</div>
+
+<div class="form-group row">
+    <?= $this->formLabel($password) ?>
+    <div class="col-sm-2">
+      <?= $this->formElement($password) ?>
+      <?= $this->formElementErrors()->render($password, ['class' => 'help-block']) ?>
+    </div>  
+</div>
+<div class="form-group row">
+   <div class="col-sm-3">
+     <?php echo $this->formSubmit($submit); ?>
+   </div>
+</div>
+
+<?php
+//echo $this->formSubmit($submit);
+echo $this->form()->closeTag();
+?>

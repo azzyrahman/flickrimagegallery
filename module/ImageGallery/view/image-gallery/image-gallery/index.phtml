@@ -1,0 +1,40 @@
+<?php
+$_SESSION['UserSessionContainer'][email];
+
+$title = 'Flickr Image Gallery';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('imagegallery', ['action' => 'list', 'query' => 'orange']) ?>">Recent search result</a>
+</p>
+
+<?php
+$form->setAttribute('action', $this->url('imagegallery', ['action' => 'list']));
+$form->prepare();
+
+$query = $form->get('query');
+$query->setAttribute('class', 'form-control');
+$query->setAttribute('placeholder', 'Image name or tag or title');
+
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+echo $this->form()->openTag($form);
+?>
+<div class="form-group row">
+    <?= $this->formLabel($query) ?>
+    <div class="col-sm-6">
+      <?= $this->formElement($query) ?>
+      <?= $this->formElementErrors()->render($query, ['class' => 'help-block']) ?>
+    </div>  
+    <div class="col-sm-3">
+     <?php echo $this->formSubmit($submit); ?>
+   </div>
+</div>
+
+<?php
+//echo $this->formSubmit($submit);
+echo $this->form()->closeTag();
+
+?>
