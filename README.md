@@ -193,4 +193,7 @@ Restart the nginx, now you should be ready to go!
 Since user registration data needs to persist forever, I have chosen mysql as a storage.
 The recent search results were also planning to save in the database flickr_images.flickr_image table but could not implement yet.
 
+### Screens:
+
+Some screenshots have been added under flickrimagegallery/screens directory for application preview.
 
