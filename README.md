@@ -1,10 +1,8 @@
-# ZendSkeletonApplication
+# Flickr Image Gallery Application
 
 ## Introduction
 
-This is a skeleton application using the Zend Framework MVC layer and module
-systems. This application is meant to be used as a starting place for those
-looking to get their feet wet with Zend Framework.
+This application was built using an Zend framework as a foundation to generates image galleries in response to user searches, drawing content from Flickr using their REST API.
 
 ## Installation using Composer
 
@@ -12,11 +10,25 @@ The easiest way to create a new Zend Framework project is to use
 [Composer](https://getcomposer.org/).  If you don't have it already installed,
 then please install as per the [documentation](https://getcomposer.org/doc/00-intro.md).
 
-This application is set up to use Composer to resolve its dependencies. Run the following from within your flickrimagegallery folder to install them:
+This application is set up to use Composer to resolve its dependencies. Run the following from within flickrimagegallery folder to install them:
 
 ```bash
 $ composer self-update
 $ composer install
+```
+Next, we need to create a database schema and tables using the data/schema.sql file in mysql. We need to st the db username and password into the
+config/autoload/local.php file as bellow. We also need to set flickr api key in this file.
+
+```bash
+return array(
+     'db' => array(
+         'username' => 'flickr_user',
+         'password' => 'your_db_password',
+     ),
+     'flickr' => array(
+         'api_key' => 'your_flickr_api_key',
+      ),
+ );
 ```
 
 Once installed, you can test it out immediately using PHP's built-in web server:
@@ -29,7 +41,7 @@ $ composer run --timeout 0 serve
 ```
 
 This will start the cli-server on port 8080, and bind it to all network
-interfaces. You can then visit the site at http://localhost:8080/
+interfaces. You can then visit the site at http://0.0.0.0:8080
 - which will bring up Zend Framework welcome page.
 
 **Note:** The built-in CLI server is *for development only*.
