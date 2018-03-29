@@ -27,8 +27,6 @@ class UserController extends AbstractActionController
           
       $form = new UserForm();
 
-      //print_r($sessionContainer);
-
       $request = $this->getRequest();
       if ($request->isPost()) {
         $user = new User();

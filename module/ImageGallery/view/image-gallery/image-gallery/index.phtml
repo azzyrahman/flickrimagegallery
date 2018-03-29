@@ -1,12 +1,10 @@
 <?php
-$_SESSION['UserSessionContainer'][email];
-
 $title = 'Flickr Image Gallery';
 $this->headTitle($title);
 ?>
 <h1><?= $this->escapeHtml($title) ?></h1>
 <p>
-    <a href="<?= $this->url('imagegallery', ['action' => 'list', 'query' => 'orange']) ?>">Recent search result</a>
+    <a href="<?= $this->url('imagegallery', ['action' => 'list']) ?>">Recent search result(TODO)</a>
 </p>
 
 <?php
@@ -34,7 +32,6 @@ echo $this->form()->openTag($form);
 </div>
 
 <?php
-//echo $this->formSubmit($submit);
 echo $this->form()->closeTag();
 
 ?>

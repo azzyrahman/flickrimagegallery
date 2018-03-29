@@ -5,13 +5,6 @@ use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
-/*
-    'controllers' => [
-        'factories' => [
-            Controller\ImageGalleryController::class => InvokableFactory::class,
-        ],
-    ],
-*/
     // The image gallery routing:
     'router' => [
         'routes' => [
