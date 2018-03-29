@@ -16,8 +16,7 @@ This application is set up to use Composer to resolve its dependencies. Run the 
 $ composer self-update
 $ composer install
 ```
-Next, we need to create a database schema and tables using the data/schema.sql file in mysql. We need to set the db username and password into the
-config/autoload/local.php file as bellow. We also need to set flickr api key in this file.
+Next, we need to create a database schema and tables using the data/schema.sql file in mysql. We need to set the db username and password into the config/autoload/local.php after renaming it from config/autoload/local.php.dist file as bellow. We also need to set flickr api key in this file.
 
 ```bash
 return array(
